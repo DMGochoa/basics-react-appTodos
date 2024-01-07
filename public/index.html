@@ -24,11 +24,57 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+    <title>TODO Machine</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
+    <div id="root">
+      <header class="header">
+        <div class="progress-container">
+            <span>Has completado X de Y TODOs</span>
+            <div class="progress-bar">
+            <!-- Aquí podrías implementar una barra de progreso con CSS/JS -->
+            </div>
+        </div>
+        <nav class="navigation">
+            <button class="navigation-all navigation-all--selected">All</button>
+            <button class="navigation-active navigation-active--selected">Active</button>
+            <button class="navigation-done navigation-active--selected">Done</button>
+        </nav>
+        <div class="search-container">
+            <input type="text" placeholder="Buscar" />
+        </div>
+    </header>
+    <div class="content">
+        <ul class="TodoList">
+            <li class="TodoItem">
+                <span class="Icon Icon-check Icon-check--active">✔</span>
+                <p class="TodoItem-p TodoItem-p--complete">Tarea 1</p>
+                <span class="Icon Icon-delete">✖</span>
+            </li>
+            <li class="TodoItem">
+                <span class="Icon Icon-check Icon-check--active">✔</span>
+                <p class="TodoItem-p TodoItem-p--complete">Tarea 1</p>
+                <span class="Icon Icon-delete">✖</span>
+            </li>
+            <li class="TodoItem">
+                <span class="Icon Icon-check Icon-check--active">✔</span>
+                <p class="TodoItem-p TodoItem-p--complete">Tarea 1</p>
+                <span class="Icon Icon-delete">✖</span>
+            </li>
+        </ul>
+        <!-- Contenedor para la gráfica a la derecha -->
+        <aside class="chart-container">
+            <div id="todo-chart">
+            <!-- Aquí integrarías la gráfica con la librería de gráficos de tu elección -->
+            </div>
+        </aside>
+    </div>
+    <footer class="footer">
+        <button class="CreateTodoButton">New</button>
+    </footer>
+    </div>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.

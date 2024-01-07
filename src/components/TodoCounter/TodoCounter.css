@@ -1,0 +1,11 @@
+.progress-container {
+    margin: 0;
+    font-size: var(--xl);
+    padding: 48px;
+    text-align: center;
+    color: var(--principal-purple);
+}
+
+.progress-container span {
+    font-weight: bold;
+}

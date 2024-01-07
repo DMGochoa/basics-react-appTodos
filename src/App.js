@@ -1,9 +1,10 @@
 import './App.css';
-import { TodoCounter } from './TodoCounter';
-import { TodoSearch } from './TodoSearch';
-import { TodoList } from './TodoList';
-import { TodoItem } from './TodoItem';
-import { CreateTodoButton } from './CreateTodoButton';
+import { TodoCounter } from './components/TodoCounter/TodoCounter';
+import { TodoSearch } from './components/TodoSearch/TodoSearch';
+import { TodoList } from './components/TodoList/TodoList';
+import { TodoItem } from './components/TodoItem/TodoItem';
+import { CreateTodoButton } from './components/CreateTodoButton/CreateTodoButton';
+import { NavigationBar } from './components/NavigationBar/NavigationBar';
 import React from 'react';
 
 const defaultTodos = [
@@ -17,19 +18,30 @@ function App() {
   return (
     // <div className="App">
     <React.Fragment>
-      <TodoCounter completed={15} total={25}/>
-      <TodoSearch />
-      <TodoList>
-        {defaultTodos.map(todo => (
-        <TodoItem 
-          key={todo.text}
-          text={todo.text}
-          completed={todo.completed}
-        />
-        ))}
-      </TodoList>
-
-      <CreateTodoButton />
+      <header className='header'>
+        <TodoCounter completed={15} total={25}/>
+        <NavigationBar />
+        <TodoSearch />
+      </header>
+      <div className='content'>
+        <TodoList>
+          {defaultTodos.map(todo => (
+          <TodoItem 
+            key={todo.text}
+            text={todo.text}
+            completed={todo.completed}
+          />
+          ))}
+        </TodoList>
+        <aside class="chart-container">
+            <div id="todo-chart">
+            {/* <!-- Aquí integrarías la gráfica con la librería de gráficos de tu elección --> */}
+            </div>
+        </aside>
+      </div>
+      <footer className='footer'>
+        <CreateTodoButton />
+      </footer>
     </React.Fragment>
     // </div>
   );

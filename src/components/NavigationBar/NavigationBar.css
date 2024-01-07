@@ -1,0 +1,25 @@
+.navigation {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.navigation button {
+    background: none;
+    border: none;
+    color: var(--principal-purple);
+    font-size: var(--lg);
+    font-weight: bold;
+    padding: 8px;
+    margin-right: 20px;
+    margin-bottom: 14px;
+    cursor: pointer;
+}
+
+.navigation button:hover {
+    background: var(--light-purple);
+    box-shadow: 4px 0 8px 1px var(--light-purple);
+    border-radius: 4px;
+}
