@@ -2,7 +2,11 @@ import './CreateTodoButton.css';
 
 function CreateTodoButton () {
     return (
-        <button class="CreateTodoButton">New</button>
+        <button className="CreateTodoButton" 
+        onClick={
+            () => alert('Aqui deberia abrir el modal')
+        }
+        >New</button>
     );
 }
 

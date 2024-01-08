@@ -15,25 +15,66 @@ const defaultTodos = [
 ]
 
 function App() {
+  const [searchValue, setSearchValue] = React.useState('');
+  const [todos, setTodos] = React.useState(defaultTodos);
+
+  const completedTodos = todos.filter(todo => !!todo.completed).length;
+  const totalTodos = todos.length;
+
+  const searchedTodos = todos.filter(
+    todo => {
+      const todoText = todo.text.toLowerCase();
+      const searchText = searchValue.toLowerCase();
+      return todoText.includes(searchText);
+    });
+
+  const completeTodo = (text) => {
+    const newTodos = [...todos];
+    const todoIndex = newTodos.findIndex(
+      todo => todo.text === text
+      );
+    if (newTodos[todoIndex].completed === true) {
+      newTodos[todoIndex].completed = false;
+    } else {
+      newTodos[todoIndex].completed = true;
+    }
+    setTodos(newTodos)
+  };
+
+  const deleteTodo = (text) => {
+    const newTodos = [...todos];
+    const todoIndex = newTodos.findIndex(
+      todo => todo.text === text
+      );
+    newTodos.splice(todoIndex, 1);
+    setTodos(newTodos)
+  };
+
+
   return (
     // <div className="App">
     <React.Fragment>
       <header className='header'>
-        <TodoCounter completed={15} total={25}/>
+        <TodoCounter completed={completedTodos} total={totalTodos}/>
         <NavigationBar />
-        <TodoSearch />
+        <TodoSearch
+          searchValue={searchValue}
+          setSearchValue={setSearchValue}
+        />
       </header>
       <div className='content'>
         <TodoList>
-          {defaultTodos.map(todo => (
+          {searchedTodos.map(todo => (
           <TodoItem 
             key={todo.text}
             text={todo.text}
             completed={todo.completed}
+            onComplete={() => completeTodo(todo.text)}
+            onDelete={() => deleteTodo(todo.text)}
           />
           ))}
         </TodoList>
-        <aside class="chart-container">
+        <aside className="chart-container">
             <div id="todo-chart">
             {/* <!-- Aquí integrarías la gráfica con la librería de gráficos de tu elección --> */}
             </div>
