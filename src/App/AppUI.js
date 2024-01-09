@@ -4,38 +4,46 @@ import { TodoList } from '../components/TodoList/TodoList';
 import { TodoItem } from '../components/TodoItem/TodoItem';
 import { CreateTodoButton } from '../components/CreateTodoButton/CreateTodoButton';
 import { NavigationBar } from '../components/NavigationBar/NavigationBar';
+import { EmptyTodos } from '../components/EmptyTodos/EmptyTodos';
+import { TodosError } from '../components/TodosError/TodosError';
+import { TodosLoading } from '../components/TodosLoading/TodosLoading';
+import { TodoContext } from '../components/TodoContext/TodoContext';
 import React from 'react';
 
-function AppUI({
-    completedTodos,
-    totalTodos,
-    searchValue,
-    setSearchValue,
-    searchedTodos,
-    completeTodo,
-    deleteTodo}) {
+
+function AppUI() {
     return (
         <React.Fragment>
             <header className='header'>
-                <TodoCounter completed={completedTodos} total={totalTodos}/>
+                <TodoCounter />
                 <NavigationBar />
-                <TodoSearch
-                searchValue={searchValue}
-                setSearchValue={setSearchValue}
-                />
+                <TodoSearch />
             </header>
             <div className='content'>
-                <TodoList>
-                {searchedTodos.map(todo => (
-                <TodoItem 
-                    key={todo.text}
-                    text={todo.text}
-                    completed={todo.completed}
-                    onComplete={() => completeTodo(todo.text)}
-                    onDelete={() => deleteTodo(todo.text)}
-                />
-                ))}
-                </TodoList>
+                <TodoContext.Consumer>
+                    {({error, loading, searchedTodos, completeTodo, deleteTodo}) => (
+                    <TodoList>
+                        {loading && (
+                        <>
+                            <TodosLoading />
+                            <TodosLoading />
+                            <TodosLoading />
+                        </>
+                        )}
+                        {error && <TodosError/>}
+                        {(!loading && searchedTodos.length === 0) && <EmptyTodos />}
+                        {searchedTodos.map(todo => (
+                        <TodoItem 
+                            key={todo.text}
+                            text={todo.text}
+                            completed={todo.completed}
+                            onComplete={() => completeTodo(todo.text)}
+                            onDelete={() => deleteTodo(todo.text)}
+                        />
+                        ))}
+                    </TodoList>
+                    )}
+                </TodoContext.Consumer>
                 <aside className="chart-container">
                     <div id="todo-chart">
                     {/* <!-- Aquí integrarías la gráfica con la librería de gráficos de tu elección --> */}
