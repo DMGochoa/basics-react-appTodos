@@ -7,16 +7,32 @@ import { CreateTodoButton } from './components/CreateTodoButton/CreateTodoButton
 import { NavigationBar } from './components/NavigationBar/NavigationBar';
 import React from 'react';
 
-const defaultTodos = [
-  { text: 'Cortar cebolla', completed: true },
-  { text: 'Tomar el curso de intro a React', completed: false },
-  { text: 'Llorar con la llorona', completed: false },
-  { text: 'Hacer un proyecto personal', completed: false },
-]
+// const defaultTodos = [
+//   { text: 'Cortar cebolla', completed: true },
+//   { text: 'Tomar el curso de intro a React', completed: false },
+//   { text: 'Llorar con la llorona', completed: false },
+//   { text: 'Hacer un proyecto personal', completed: false },
+// ]
+
+// localStorage.setItem('TODOS', JSON.stringify(defaultTodos));
+// localStorage.removeItem('TODOS');
 
 function App() {
+  let localStorageTodos = localStorage.getItem('TODOS')
+  let parsedTodos;
+
+
+  if (!localStorageTodos) {
+    localStorage.setItem('TODOS', JSON.stringify([]));
+    parsedTodos = [];
+  } else {
+    parsedTodos = JSON.parse(
+      localStorageTodos
+      );
+  }
+
   const [searchValue, setSearchValue] = React.useState('');
-  const [todos, setTodos] = React.useState(defaultTodos);
+  const [todos, setTodos] = React.useState(parsedTodos);
 
   const completedTodos = todos.filter(todo => !!todo.completed).length;
   const totalTodos = todos.length;
@@ -28,6 +44,14 @@ function App() {
       return todoText.includes(searchText);
     });
 
+    const saveTodos = (newTodos) => {
+      localStorage.setItem(
+        'TODOS',
+        JSON.stringify(newTodos)
+      );
+      setTodos(newTodos)
+    }
+
   const completeTodo = (text) => {
     const newTodos = [...todos];
     const todoIndex = newTodos.findIndex(
@@ -38,7 +62,7 @@ function App() {
     } else {
       newTodos[todoIndex].completed = true;
     }
-    setTodos(newTodos)
+    saveTodos(newTodos)
   };
 
   const deleteTodo = (text) => {
@@ -47,7 +71,7 @@ function App() {
       todo => todo.text === text
       );
     newTodos.splice(todoIndex, 1);
-    setTodos(newTodos)
+    saveTodos(newTodos)
   };
 
 
