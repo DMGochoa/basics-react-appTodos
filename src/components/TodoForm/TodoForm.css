@@ -1,0 +1,78 @@
+/* Estilo base para el formulario */
+form {
+    width: 95%;
+    max-width: 300px;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+  /* Estilo para la etiqueta del formulario */
+form label {
+    font-size: var(--xl);
+    color: var(--principal-purple);
+    text-align: center;
+    font-weight: bold;
+    padding: 0;
+    margin-bottom: 12px;
+}
+
+form textarea::placeholder {
+    color: var(--principal-purple); /* Color para el texto de marcador de posición */
+}
+
+  /* Estilo para el textarea */
+form textarea {
+    font-size: var(--lg);
+    padding: 0;
+    border: 2px solid var(--principal-purple);
+    box-shadow: 0 5px 50px rgba(32, 35, 41, 0.25);
+    color: var(--principal-purple);
+    border-radius: 4px;
+    text-align: center;
+    padding: 12px;
+    margin-bottom: 16px;
+    height: 96px;
+    width: calc(100% - 25px);
+    resize: none;
+    font-family: 'Montserrat';
+}
+/* Si quieres los botones lado a lado */
+div .button-container {
+    justify-content: space-between;
+}
+  /* Estilo para los botones del formulario */
+.TodoForm-button {
+    width: 120px;
+    height: 24px;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    font-family: 'Montserrat';
+    font-size: var(--md);
+    font-weight: bold;
+    padding: 0;
+    display: inline-block;
+}
+
+  /* Estilo para el botón de enviar */
+.TodoForm-button--submit {
+    background: var(--principal-purple); /* Color principal morado */
+    color: white;
+    margin-right: 10px;
+    box-shadow: 0px 5px 25px rgba(32, 35, 41, 0.25);
+}
+
+  /* Estilo para el botón de cancelar */
+.TodoForm-button--cancel {
+    background: transparent;
+    color: var(--black);
+}
+
+  /* Estilo para los botones del formulario al hacer hover */
+.TodoForm-button:hover {
+    opacity: 0.9;
+}
+

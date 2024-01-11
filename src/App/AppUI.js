@@ -8,10 +8,21 @@ import { EmptyTodos } from '../components/EmptyTodos/EmptyTodos';
 import { TodosError } from '../components/TodosError/TodosError';
 import { TodosLoading } from '../components/TodosLoading/TodosLoading';
 import { TodoContext } from '../components/TodoContext/TodoContext';
+import { Modal } from '../components/Modal/Modal';
+import { TodoForm } from '../components/TodoForm/TodoForm';
 import React from 'react';
 
 
 function AppUI() {
+    const {
+        error,
+        loading,
+        searchedTodos,
+        completeTodo,
+        deleteTodo,
+        openModal,
+        setOpenModal
+    } = React.useContext(TodoContext);
     return (
         <React.Fragment>
             <header className='header'>
@@ -20,30 +31,26 @@ function AppUI() {
                 <TodoSearch />
             </header>
             <div className='content'>
-                <TodoContext.Consumer>
-                    {({error, loading, searchedTodos, completeTodo, deleteTodo}) => (
-                    <TodoList>
-                        {loading && (
-                        <>
-                            <TodosLoading />
-                            <TodosLoading />
-                            <TodosLoading />
-                        </>
-                        )}
-                        {error && <TodosError/>}
-                        {(!loading && searchedTodos.length === 0) && <EmptyTodos />}
-                        {searchedTodos.map(todo => (
-                        <TodoItem 
-                            key={todo.text}
-                            text={todo.text}
-                            completed={todo.completed}
-                            onComplete={() => completeTodo(todo.text)}
-                            onDelete={() => deleteTodo(todo.text)}
-                        />
-                        ))}
-                    </TodoList>
+                <TodoList>
+                    {loading && (
+                    <>
+                        <TodosLoading />
+                        <TodosLoading />
+                        <TodosLoading />
+                    </>
                     )}
-                </TodoContext.Consumer>
+                    {error && <TodosError/>}
+                    {(!loading && searchedTodos.length === 0) && <EmptyTodos />}
+                    {searchedTodos.map(todo => (
+                    <TodoItem 
+                        key={todo.text}
+                        text={todo.text}
+                        completed={todo.completed}
+                        onComplete={() => completeTodo(todo.text)}
+                        onDelete={() => deleteTodo(todo.text)}
+                    />
+                    ))}
+                </TodoList>
                 <aside className="chart-container">
                     <div id="todo-chart">
                     {/* <!-- Aquí integrarías la gráfica con la librería de gráficos de tu elección --> */}
@@ -53,6 +60,11 @@ function AppUI() {
             <footer className='footer'>
                 <CreateTodoButton />
             </footer>
+            <Modal isOpen={openModal} setOpen={setOpenModal}>
+                <TodoForm />
+            </Modal>
+
+            
         </React.Fragment>
     );
 }
