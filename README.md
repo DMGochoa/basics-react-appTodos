@@ -1,20 +1,49 @@
-# Repositorio base del Curso de Introducción a React.js en Platzi
+# Introductory React Project
 
-¡Hola, Platzinauta!
+Welcome to my Introductory React Project! This is a to-do list application crafted to offer a hands-on experience for those starting out with the React framework. The goal of this project is to provide a practical introduction to the core concepts of React, including components, state management, and event handling.
 
-En este repositorio encontrarás el código de todas las clases del [Curso de Introducción a React.js](https://platzi.com/reactjs). Para empezar solo debes clonar este repositorio (`git clone`), instalar sus dependencias (`npm i`) y ejecutar la aplicación (`npm start`).
+## Why a To-Do List?
 
-La rama principal contiene el código con el que eempezamos el curso. En las demás ramas encontrarás el código de las siguientes clases y finalmente el deploy de la aplicación.
+A to-do list is a universal tool that everyone can relate to. Building one with React allows for understanding the dynamic nature of user interfaces and the React way of making them reactive and efficient.
 
-¡Mucha suerte aprendiendo React! #NuncaParesDeAprender
+## Project Features
 
-## Getting Started with Create React App
+- Add new to-do items with a click of a button.
+- Mark items as done or delete them.
+- Filter through all, active, or completed tasks.
+- Sleek, user-friendly design with a responsive layout.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Tech Stack
 
-## Available Scripts
+- **React**: For building the user interface
+- **Create React App**: To set up the development environment without hassle
+- **CSS**: For styling components
 
-In the project directory, you can run:
+## Prerequisites
+
+Before you begin, ensure you have met the following requirements:
+- You have installed the latest version of [Node.js and npm](https://nodejs.org/).
+- You are familiar with basic JavaScript and modern ES6+ syntax.
+
+## Setting Up for Development
+
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+
+```bash
+# Clone the repository
+git clone https://github.com/DMGochoa/basics-react-appTodos.git
+
+# Navigate to the project directory
+cd basics-react-appTodos
+
+# Install dependencies
+npm install
+
+# Start the development server
+npm start
+```
+
+
 
 ### `npm start`
 
@@ -44,32 +73,43 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+## License
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
+## Contact
+
+Diego Moreno - [Linkedin](https://www.linkedin.com/in/diegoamg/) - diegomore1997@gmail.com
+
+Github: [https://github.com/your-username/your-project-name](https://github.com/DMGochoa/basics-react-appTodos)
+
+
+### Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+#### Code Splitting
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+#### Analyzing the Bundle Size
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
+#### Making a Progressive Web App
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
+#### Advanced Configuration
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
+#### Deployment
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### `npm run build` fails to minify
+#### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
